@@ -1,4 +1,7 @@
 {
+  "name": "socially-challenged-mobile",
+  "version": "1.0.0",
+  "description": "mobile app version of socially challenged using react native",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -7,6 +10,8 @@
     "web": "expo start --web",
     "eject": "expo eject"
   },
+  "author": "mich-cook",
+  "license": "UNLICENSED",
   "dependencies": {
     "expo": "~42.0.1",
     "expo-status-bar": "~1.0.4",
