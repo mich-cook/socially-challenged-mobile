@@ -1,11 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import styled from 'styled-components/native';  // native version of library
+
+const H1 = styled.Text`
+  color: #7733ff;
+  font-size: 40px;
+  font-weight: bold;
+`;
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Hello react native via expo</Text>
+      <H1>Hello react native via expo</H1>
       <Text style={styles.paragraph}>Here is an image from a cartoon:</Text>
       <Image style={styles.image} source={require('./assets/images/apple-onion-block-party.jpg')} />
       <StatusBar style="auto" />
@@ -24,11 +31,7 @@ const styles = StyleSheet.create({
     height: '50%',
     width: '50%',
   },
-  heading: {
-    "color": "#0077cc",
-    "fontSize": 40,
-    "fontWeight": "bold",
-  },
+  heading: {},
   paragraph: {
     "fontSize": 24,
     "marginTop": 12,
