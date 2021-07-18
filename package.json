@@ -1,0 +1,11 @@
+{
+  "name": "socially-challenged-mobile",
+  "version": "1.0.0",
+  "description": "mobile app version of socially challenged using react native",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mich-cook",
+  "license": "UNLICENSED"
+}
