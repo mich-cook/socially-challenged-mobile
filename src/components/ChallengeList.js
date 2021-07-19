@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, Text } from 'react-native';
+import { FlatList, View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
 import Challenge from './Challenge.js';
@@ -32,9 +32,15 @@ export default (props) => {
         keyExtractor={({ id }) => id.toString()}
         ItemSeparatorComponent={() => <Separator />}
         renderItem={({ item }) => (
-          <ChallengeList>
-            <Challenge challenge={item} />
-          </ChallengeList>
+          <TouchableOpacity
+            onPress={() =>
+              props.navigation.navigate('Challenge', { id: item.id })
+            }
+          >
+            <ChallengeList>
+              <Challenge challenge={item} />
+            </ChallengeList>
+          </TouchableOpacity>
         )}
       />
     </View>
