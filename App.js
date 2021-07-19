@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import styled from 'styled-components/native';  // native version of library
+import Screens from './src/screens/index.js';
 
 const H1 = styled.Text`
   color: #7733ff;
@@ -9,7 +10,9 @@ const H1 = styled.Text`
   font-weight: bold;
 `;
 
-export default function App() {
+export default () => <Screens />;
+
+function AppNoMore() {
   return (
     <View style={styles.container}>
       <H1>Hello react native via expo</H1>
@@ -18,7 +21,7 @@ export default function App() {
       <StatusBar style="auto" />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
