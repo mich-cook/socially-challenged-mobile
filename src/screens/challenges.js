@@ -1,17 +1,27 @@
 import React from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text } from 'react-native';
+import { useQuery, gql } from '@apollo/client';
 import ChallengeList from '../components/ChallengeList.js';
 
+const challengeQuery = gql`
+  query challengeList {
+    challenges {
+      id
+      createdAt
+      owner {
+        displayName
+        id
+      }
+    }
+  }
+`;
+
 const Challenges = props => {
-  return <ChallengeList navigation={props.navigation} />
-  /*
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Challenges</Text>
-      <ChallengeList />
-      <Button title="Single Challenge" onPress={() => props.navigation.navigate('Challenge')} />
-    </View>
-  );*/
+  const { loading, error, data } = useQuery(challengeQuery);
+  if (loading) return <Text>Loading challenge data...</Text>;
+  if (error) return <Text>Error loading challenge data</Text>;
+  console.log(data);
+  return <ChallengeList challenges={data.challenges} navigation={props.navigation} />
 };
 
 Challenges.navigationOptions = {
