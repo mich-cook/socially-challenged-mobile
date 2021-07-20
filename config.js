@@ -5,14 +5,14 @@ import Constants from 'expo-constants';
 
 // get the localhost ip address at runtime using the Expo manifest
 // this enables both simulator and physical device debugging with our local api
-let localhost;
+let localhost = 'localhost';
 if (Constants.manifest.debuggerHost) {
   localhost = Constants.manifest.debuggerHost.split(':').shift();
 }
 
 const ENV = {
   "dev": {
-    "API_URL": `http://${localhost}:4000/api`,
+    "API_URL": `http://${localhost}:3030/api`,
   },
   "prod": {
     "API_URL": "",
