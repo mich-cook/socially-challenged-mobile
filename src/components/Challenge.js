@@ -9,7 +9,8 @@ const ChallengeView = styled.ScrollView`
 export default (props) => {
   return (
     <ChallengeView>
-      <Text>{props.challenge.title}</Text>
+      <Text>Challenge {props.challenge.id} created at: {props.challenge.createdAt}</Text>
+      <Text>Created by: {props.challenge.owner.displayName}</Text>
     </ChallengeView>
   );
 };

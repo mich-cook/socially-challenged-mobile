@@ -20,7 +20,6 @@ const Challenges = props => {
   const { loading, error, data } = useQuery(challengeQuery);
   if (loading) return <Text>Loading challenge data...</Text>;
   if (error) return <Text>Error loading challenge data</Text>;
-  console.log(data);
   return <ChallengeList challenges={data.challenges} navigation={props.navigation} />
 };
 

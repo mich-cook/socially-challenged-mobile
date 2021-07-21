@@ -4,14 +4,6 @@ import styled from 'styled-components/native';
 
 import Challenge from './Challenge.js';
 
-const tmpData = [
-  { "id": 0, "title": "h75 p0" },
-  { "id": 1, "title": "h75 p1" },
-  { "id": 2, "title": "h75 p2" },
-  { "id": 3, "title": "h75 p3" },
-  { "id": 4, "title": "h75 p4" },
-];
-
 const ChallengeList = styled.View`
   height: 100px;
   overflow: hidden;
@@ -28,7 +20,7 @@ export default (props) => {
   return (
     <View>
       <FlatList
-        data={tmpData}
+        data={props.challenges}
         keyExtractor={({ id }) => id.toString()}
         ItemSeparatorComponent={() => <Separator />}
         renderItem={({ item }) => (
