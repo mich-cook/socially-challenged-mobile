@@ -1,11 +1,33 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import { useQuery, gql } from '@apollo/client';
+
+import Challenge from '../components/Challenge.js';
+
+const GET_CHALLENGE = gql`
+  query challenge($id: ID!) {
+    challenge(id: $id) {
+      id
+      cutoff
+      start
+      end
+      createdAt
+      updatedAt
+      participants {
+        displayName
+      }
+      owner {
+        displayName
+      }
+    }
+  }
+`;
 
 export default (props) => {
   const id = props.navigation.getParam('id');
-  return (
-    <View style={{ padding: 10 }}>
-      <Text>Individual Challenge: {id}</Text>
-    </View>
-  );
+  const { loading, error, data } = useQuery(GET_CHALLENGE, { "variables": { id }});
+
+  if (loading) return <Text>Loading data for challenge ${id}</Text>;
+  if (error) return <Text>Error loading data for challenge ${id}</Text>;
+  return <Challenge challenge={data.challenge} />
 };
