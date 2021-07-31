@@ -9,12 +9,25 @@ import AboutScreen from './about.js';
 import PrivacyScreen from './privacy.js';
 import ChallengesScreen from './challenges.js';
 
+// Auth handling
+import AuthLoading from './authloading.js';
+import SignIn from './signin.js';
+import Settings from './settings.js';
+
 // stacked screens
 import ChallengeScreen from './challenge.js';
+
+const AuthStack = createStackNavigator({
+  Signin: SignIn,
+});
 
 const ChallengeStack = createStackNavigator({
   "Challenges Screen Title": ChallengesScreen,
   Challenge: ChallengeScreen,
+});
+
+const SettingsStack = createStackNavigator({
+  Settings: Settings,
 });
 
 const TabNavigation = createBottomTabNavigator({
@@ -42,6 +55,15 @@ const TabNavigation = createBottomTabNavigator({
       tabBarLabel: 'Challenges',
       tabBarIcon: ({ tintColor }) => (
         <Ionicons name="barbell" size={24} color={tintColor} />
+      ),
+    },
+  },
+  SettingsTab: {
+    screen: Settings,
+    navigationOptions: {
+      tabBarLabel: 'Settings',
+      tabBarIcon: ({ tintColor }) => (
+        <MaterialIcons name="settings" size={24} color={tintColor} />
       ),
     },
   },
