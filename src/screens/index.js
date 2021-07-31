@@ -69,6 +69,8 @@ const TabNavigation = createBottomTabNavigator({
   },
 });
 
+// TODO: update this since switch navigator is deprecated
+// https://reactnavigation.org/docs/upgrading-from-4.x/#switch-navigator
 const SwitchNavigation = createSwitchNavigator(
   {
     AuthLoading: AuthLoading,
