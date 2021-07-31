@@ -1,5 +1,5 @@
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
@@ -69,4 +69,14 @@ const TabNavigation = createBottomTabNavigator({
   },
 });
 
-export default createAppContainer(TabNavigation);
+const SwitchNavigation = createSwitchNavigator(
+  {
+    AuthLoading: AuthLoading,
+    Auth: AuthStack,
+    App: TabNavigation,
+  }, {
+    initialRouteName: 'AuthLoading'
+  }
+);
+
+export default createAppContainer(SwitchNavigation);
