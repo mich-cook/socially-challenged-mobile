@@ -11,6 +11,7 @@ import ChallengesScreen from './challenges.js';
 
 // Auth handling
 import AuthLoading from './authloading.js';
+import SignUp from './signup.js';
 import SignIn from './signin.js';
 import Settings from './settings.js';
 
@@ -19,6 +20,7 @@ import ChallengeScreen from './challenge.js';
 
 const AuthStack = createStackNavigator({
   Signin: SignIn,
+  Signup: SignUp,
 });
 
 const ChallengeStack = createStackNavigator({
