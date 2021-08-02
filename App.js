@@ -1,13 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from 'apollo-link-context';
+import * as SecureStore from 'expo-secure-store';
 import styled from 'styled-components/native';  // native version of library
 import Screens from './src/screens/index.js';
 import config from './config.js';
 
 const { API_URL } = config();
+const uri = API_URL;
 const cache = new InMemoryCache();
+const httpLink = createHttpLink({ uri });
+
+const authLink = setContext(async (_, { headers}) => {
+  return {
+    headers: {
+      ...headers,
+      authorization: (await SecureStore.getItemAsync('token')) || ''
+    }
+  };
+});
 
 const H1 = styled.Text`
   color: #7733ff;
@@ -16,7 +34,7 @@ const H1 = styled.Text`
 `;
 
 const client = new ApolloClient({
-  uri: API_URL,
+  link: authLink.concat(httpLink),
   cache
 });
 
