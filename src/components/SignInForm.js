@@ -37,7 +37,12 @@ export default (props) => {
   const [ password, setPassword ] = useState();
 
   const handleSubmit = () => {
-    
+    props.action({
+      variables: {
+        username: username,
+        password: password,
+      }
+    });
   };
 
   return (
